@@ -52,8 +52,7 @@ A Flutter application for managing and querying 3G and 4G radiobase information 
 
     ```bash
     git clone https://github.com/your-username/radiobases-app.git
-
-cd radiobases-app
+    cd radiobases-app
 
 2. **Install dependencies**
 
@@ -67,35 +66,35 @@ cd radiobases-app
 
 ## 🗂️ Project Structure
 
-lib/
+    lib/
 
-├── main.dart # Entry point
+    ├── main.dart # Entry point
 
-├── screens/ # Application screens
+    ├── screens/ # Application screens
 
-│ ├── home_screen.dart # Main search screen
+    │ ├── home_screen.dart # Main search screen
 
-│ ├── rb3g_list_screen.dart # List of 3G radio base stations
+    │ ├── rb3g_list_screen.dart # List of 3G radio base stations
 
-│ ├── rb4g_list_screen.dart # List of 4G radio base stations
+    │ ├── rb4g_list_screen.dart # List of 4G radio base stations
 
-│ ├── add_rb3g_screen.dart # 3G Add Form
+    │ ├── add_rb3g_screen.dart # 3G Add Form
 
-│ └── add_rb4g_screen.dart # 4G Add Form
+    │ └── add_rb4g_screen.dart # 4G Add Form
 
-├── models/ # Data Models
+    ├── models/ # Data Models
 
-│ ├── radiobase3g.dart # 3G Radio Base Model
+    │ ├── radiobase3g.dart # 3G Radio Base Model
 
-│ └── radiobase4g.dart # 4G Radio Base Model
+    │ └── radiobase4g.dart # 4G Radio Base Model
 
-├── database/ # Database Layer
+    ├── database/ # Database Layer
 
-│ └── database_helper.dart # SQLite Helper
+    │ └── database_helper.dart # SQLite Helper
 
-└── utils/ # Utilities
+    └── utils/ # Utilities
 
-└── excel_helper.dart # Excel File Management
+    └── excel_helper.dart # Excel File Management
 
 ## 📱 Using the Application
 
@@ -148,11 +147,10 @@ lib/
 
 ## 🐛 Troubleshooting
 
-Android Permission Error
-Ensure that the android/app/src/main/AndroidManifest.xml file has the necessary permissions.
+**Android Permission Error**
+**Ensure that the android/app/src/main/AndroidManifest.xml file has the necessary permissions.**
 
-Dependencies not found
-Run:
+**Dependencies not found Run:**
 
     '''bash
     flutter clean
