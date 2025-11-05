@@ -17,10 +17,11 @@ samples, guidance on mobile development, and a full API reference.
 
 # Radiobases App 📡
 
-A Flutter application for managing and querying 3G and 4G radiobase information with an SQLite database and Excel import/export capabilities.
+A Flutter application for reading provider cell info in real time. It can also managing and querying 3G and 4G radiobase information with an SQLite database and Excel import/export capabilities.
 
 ## 🚀 Features
 
+- **Read Cell Info in real-time**: Search for current cell tower informetion in live
 - **Smart Search**: Search for cell towers by CI (4G) or PSC (3G)
 - **Complete Management**: Add, delete, and view cell towers
 - **Export/Import**: Excel support

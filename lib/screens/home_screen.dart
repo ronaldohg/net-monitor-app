@@ -8,11 +8,15 @@ import 'package:flutter_cell_info/cell_response.dart';
 import 'package:flutter_cell_info/flutter_cell_info.dart';
 import 'package:flutter_cell_info/models/common/cell_type.dart';
 import 'package:flutter_cell_info/sim_info_response.dart';
+import 'package:net_monitor_cubano/screens/rb3g_list_screen.dart';
+import 'package:net_monitor_cubano/screens/rb4g_list_screen.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../database/database_helper.dart';
+import '../main.dart';
 import '../models/radiobase3g.dart';
 import '../models/radiobase4g.dart';
 import '../utils/cell_info_manager.dart';
+import 'about_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -94,6 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Ver información de radiobase')),
+      drawer: _buildDrawer(context),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : SingleChildScrollView(
@@ -341,6 +346,109 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       _cellsResponse = cellsResponse;
     });
+  }
+
+  // Agregar este método en la clase _HomeScreenState:
+  Widget _buildDrawer(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          DrawerHeader(
+            decoration: BoxDecoration(
+              color: Colors.blue,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Icon(
+                  Icons.cell_tower,
+                  color: Colors.white,
+                  size: 40,
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'Net Monitor Cubano',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const Spacer(),
+                Text(
+                  'Versión 1.0.3',
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.8),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.home),
+            title: const Text('Inicio'),
+            onTap: () {
+              Navigator.pop(context);
+              // Ya estamos en home, no necesita navegación
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.list),
+            title: const Text('Radiobases 3G'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const Rb3GListScreen()),
+              );
+              // Cambiar al índice 1 programáticamente
+              // Necesitaríamos un GlobalKey para el MainScreen
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.list),
+            title: const Text('Radiobases 4G'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const Rb4GListScreen()),
+              );
+              // Cambiar al índice 2 programáticamente
+            },
+          ),
+          const Divider(),
+          ListTile(
+            leading: const Icon(Icons.person),
+            title: const Text('Acerca de'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AboutScreen()),
+              );
+            },
+          ),
+          /*ListTile(
+            leading: const Icon(Icons.email),
+            title: const Text('Contacto'),
+            onTap: () {
+              Navigator.pop(context);
+              // Aquí podrías abrir el cliente de email
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.settings),
+            title: const Text('Configuración'),
+            onTap: () {
+              Navigator.pop(context);
+              // Futura pantalla de configuración
+            },
+          ),*/
+        ],
+      ),
+    );
   }
 
   Future<void> _performSearch() async {
